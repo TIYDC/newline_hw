@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+# coding: utf-8
+require_relative "../lib/homework"
+
+puts Homework.generate_cmd(*ARGV)
