@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 # coding: utf-8
-require_relative "../lib/homework"
+require_relative "../lib/tiyo_hw"
 
-puts Homework.generate_cmd(*ARGV)
+puts TiyoHw.generate_cmd(*ARGV)

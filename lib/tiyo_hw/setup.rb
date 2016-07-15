@@ -1,6 +1,6 @@
 require "fileutils"
 require "uri"
-module Homework
+module TiyoHw
   class Setup
     attr_accessor :url
     def initialize(url)
@@ -9,12 +9,16 @@ module Homework
 
     def sha
       matches = /\b[0-9a-f]{5,40}\b/.match(url)
-      @sha = matches.to_s if matches
+      @sha = matches.to_s if matches && !is_gist?
     end
 
     def git_url
       final_url = url.split("/tree/").first
       "#{final_url}#{'.git' unless final_url.end_with?('.git')}"
+    end
+
+    def is_gist?
+      /gist\.github\.com/.match(url)
     end
 
     def dir_name

@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "homework/version"
+require "tiyo_hw/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "homework"
-  spec.version       = Homework::VERSION
+  spec.name          = "tiyo_hw"
+  spec.version       = TiyoHw::VERSION
   spec.authors       = ["Russell Osborne"]
   spec.email         = ["russell@burningpony.com"]
 

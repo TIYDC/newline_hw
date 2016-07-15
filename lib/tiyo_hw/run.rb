@@ -1,4 +1,4 @@
-module Homework
+module TiyoHw
   class Run
     def initialize(pwd)
       @pwd = pwd

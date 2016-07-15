@@ -1,8 +1,8 @@
-require_relative "homework/version"
-require_relative "homework/run"
-require_relative "homework/setup"
+require_relative "tiyo_hw/version"
+require_relative "tiyo_hw/run"
+require_relative "tiyo_hw/setup"
 require "active_support/core_ext/string"
-module Homework
+module TiyoHw
   SLEEP_TIME = 4
   HOMEWORK_DIR = "~/theironyard/homework".freeze
   EDITOR = "atom".freeze
