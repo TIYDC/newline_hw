@@ -13,17 +13,18 @@ module TiyoHw
     end
 
     def _rails_commands
-      commands
+      commands = []
       commands << "bin/rake db:setup"
       commands << "bin/rails s & sleep #{SLEEP_TIME} && open http://localhost:3000"
-      commands << "bin/rake test && %"
+      commands << "bin/rake test"
+      commands << "%%" # Reown the rails s process
       commands
     end
 
     def cmd
       commands = []
       commands << "bundle install" if has_gemfile?
-      commands + _rails_commands if is_rails?
+      commands = commands + _rails_commands if is_rails?
       commands.join(" && ")
     end
   end
