@@ -15,6 +15,8 @@ module TiyoHw
       Setup.new(url_or_path).cmd
     when "run"
       Run.new(url_or_path).cmd
+    when "cmd"
+      ShellFunction.cmd
     end
   end
 
