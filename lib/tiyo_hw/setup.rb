@@ -9,7 +9,7 @@ module TiyoHw
 
     def sha
       matches = /\b[0-9a-f]{5,40}\b/.match(url)
-      @sha = matches.to_s if matches && !is_gist?
+      @sha = matches.to_s if matches && !gist?
     end
 
     def git_url
@@ -17,7 +17,7 @@ module TiyoHw
       "#{final_url}#{'.git' unless final_url.end_with?('.git')}"
     end
 
-    def is_gist?
+    def gist?
       /gist\.github\.com/.match(url)
     end
 

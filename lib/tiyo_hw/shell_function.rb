@@ -8,10 +8,11 @@
 
 module TiyoHw
   class ShellFunction
+    HW_FUNCTION = "hw".freeze
     def self.cmd
       path = File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "exe", "tiyohw"))
-<<-eos
-function hw() {
+      <<-eos
+function #{HW_FUNCTION}() {
  URL=$1
  OUTPUT="$(#{path} setup $URL)"
  eval ${OUTPUT}

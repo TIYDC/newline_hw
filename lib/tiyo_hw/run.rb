@@ -4,11 +4,11 @@ module TiyoHw
       @pwd = pwd
     end
 
-    def is_rails?
+    def rails?
       File.exist?(File.join(@pwd, "bin", "rails"))
     end
 
-    def has_gemfile?
+    def gemfile?
       File.exist?(File.join(@pwd, "Gemfile"))
     end
 
@@ -23,8 +23,8 @@ module TiyoHw
 
     def cmd
       commands = []
-      commands << "bundle install" if has_gemfile?
-      commands = commands + _rails_commands if is_rails?
+      commands << "bundle install" if gemfile?
+      commands += _rails_commands if rails?
       commands.join(" && ")
     end
   end
