@@ -1,28 +1,27 @@
 # TiyoHw
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tiyo_hw`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Is a tool to rapidly clone and setup projects in a standard format, this is primarily
+used to improving the speed to review homework turned in in a bootcamp like setting.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'tiyo_hw'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install from rubygems:
 
     $ gem install tiyo_hw
 
+In your .bashrc / .bash_profile / .zshrc
+
+    $ eval "$(tiyohw init)"
+
 ## Usage
 
-TODO: Write usage instructions here
+Once the the eval code has been added to your bash or zsh profile you will have access to the `hw` command.  This is where the majority of the tools use comes into play.
+
+  `hw GIT_REPO`
+
+  Example
+
+  `hw https://github.com/rposborne/countries`
 
 ## Development
 
