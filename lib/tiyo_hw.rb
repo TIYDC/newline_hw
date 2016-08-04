@@ -1,6 +1,7 @@
 require_relative "tiyo_hw/version"
 require_relative "tiyo_hw/run"
 require_relative "tiyo_hw/setup"
+require_relative "tiyo_hw/shell_function"
 require "active_support/core_ext/string"
 module TiyoHw
   SLEEP_TIME = 4
@@ -8,6 +9,7 @@ module TiyoHw
   EDITOR = "atom".freeze
 
   def self.generate_cmd(command, url_or_path = nil)
+    return ShellFunction.cmd if command == "init"
     return fail_msg("Please enter a valid URL: #{url_or_path.inspect} is not a valid url ") if url_or_path.to_s.blank?
 
     case command
@@ -15,8 +17,7 @@ module TiyoHw
       Setup.new(url_or_path).cmd
     when "run"
       Run.new(url_or_path).cmd
-    when "cmd"
-      ShellFunction.cmd
+
     end
   end
 
