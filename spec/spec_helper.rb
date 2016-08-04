@@ -19,7 +19,14 @@
 #
 #
 
+require 'simplecov'
+SimpleCov.start do
+  add_group 'Libraries', 'lib'
+  add_filter "/spec/"
+end
+
 require "./lib/tiyo_hw"
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
