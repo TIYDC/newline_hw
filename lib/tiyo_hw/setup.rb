@@ -9,7 +9,7 @@ module TiyoHw
 
     def sha
       matches = /\b[0-9a-f]{5,40}\b/.match(url)
-      @sha = matches.to_s if matches && !gist?
+      matches.to_s if matches && !gist?
     end
 
     def git_url
