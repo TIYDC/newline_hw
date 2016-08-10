@@ -37,7 +37,7 @@ module TiyoHw
       setup
       clean_dir
       cmds = []
-      cmds << "cd #{File.expand_path( )}"
+      cmds << "cd #{File.expand_path( HOMEWORK_DIR )}"
       cmds << "git clone #{git_url} #{dir_name}"
       cmds << "cd #{dir_name}"
       cmds << "git checkout #{sha} -b submitted_assignment" if sha
