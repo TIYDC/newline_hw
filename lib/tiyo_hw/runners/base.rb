@@ -13,8 +13,16 @@ module TiyoHw
         @commands << cmd
       end
 
+      def file_path(*args)
+        File.expand_path(File.join(pwd, *args))
+      end
+
       def file?(*args)
-        File.exist?(File.expand_path(File.join(pwd, *args)))
+        File.exist?(file_path(*args))
+      end
+
+      def file_contents?(regex, *args)
+        !File.readlines(file_path(*args)).grep(regex).empty?
       end
 
       def prepare_commands
