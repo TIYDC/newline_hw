@@ -1,6 +1,6 @@
-require "./lib/tiyo_hw/runners/base"
-require "./lib/tiyo_hw/runners/ruby"
-require "./lib/tiyo_hw/runners/javascript"
+require_relative "runners/base"
+require_relative "runners/ruby"
+require_relative "runners/javascript"
 
 module TiyoHw
   class Run
