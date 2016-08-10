@@ -6,7 +6,7 @@ require "active_support/core_ext/string"
 module TiyoHw
   SLEEP_TIME = 4
   HOMEWORK_DIR = "~/theironyard/homework".freeze
-  EDITOR = "atom".freeze
+  EDITOR = ENV['EDITOR'] || "atom".freeze
 
   def self.generate_cmd(command, url_or_path = nil)
     return ShellFunction.cmd if command == "init"
