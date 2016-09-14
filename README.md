@@ -24,21 +24,26 @@ Once the the eval code has been added to your bash or zsh profile you will have 
   `hw https://github.com/rposborne/countries`
 
 ### What it does
+
 _All languages_
+
 1. Clone a repo into ~/theironyard/homework using githubname-reponame
 2. Trigger your editor to open. 
 3. `cd` current shell into new directory
 
 _Ruby_
+
 1. Run `bundle install`  if `Gemfile` is present
 
 _Rails_
+
 1. `bin/rake db:setup`
 2.  Start a rails server / open it in default browser
 3.  `bin/rake test`
 4.  Reown rails server process so everything behaves as expected.
 
-_Javascript
+_Javascript_
+
 1. Run `npm install` when `package.json` present
 
 ## Development
