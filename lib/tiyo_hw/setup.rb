@@ -26,18 +26,22 @@ module TiyoHw
     end
 
     def clean_dir
-      FileUtils.rm_rf(File.join(File.expand_path(HOMEWORK_DIR), dir_name))
+      FileUtils.rm_rf(File.join(homework_path, dir_name))
+    end
+
+    def homework_path
+      File.expand_path(HOMEWORK_DIR)
     end
 
     def setup
-      FileUtils.mkdir_p HOMEWORK_DIR
+      FileUtils.mkdir_p homework_path
     end
 
     def cmd
       setup
       clean_dir
       cmds = []
-      cmds << "cd #{File.expand_path( )}"
+      cmds << "cd #{homework_path}"
       cmds << "git clone #{git_url} #{dir_name}"
       cmds << "cd #{dir_name}"
       cmds << "git checkout #{sha} -b submitted_assignment" if sha

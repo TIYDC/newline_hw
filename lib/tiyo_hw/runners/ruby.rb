@@ -9,11 +9,16 @@ module TiyoHw
         file?("Gemfile")
       end
 
+      def spring?
+        file_contents?(/spring/, "Gemfile.lock")
+      end
+
       def _rails_commands
+        add_command "spring stop" if spring?
         add_command "bin/rake db:setup"
         add_command "bin/rails s & sleep #{SLEEP_TIME} && open http://localhost:3000"
         add_command "bin/rake test"
-        add_command "%%" # Reown the rails s process
+        add_command "sleep 1 && %%" # Reown the rails s process
       end
 
       def prepare_commands
