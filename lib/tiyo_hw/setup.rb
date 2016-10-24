@@ -8,7 +8,7 @@ module TiyoHw
     end
 
     def sha
-      matches = /\b[0-9a-f]{5,40}\b/.match(url)
+      matches = /\b[0-9a-f]{40}\b/.match(url)
       matches.to_s if matches && !gist?
     end
 
