@@ -2,6 +2,7 @@ require_relative "tiyo_hw/version"
 require_relative "tiyo_hw/run"
 require_relative "tiyo_hw/setup"
 require_relative "tiyo_hw/shell_function"
+require_relative "tiyo_hw/chrome_manifest"
 require "active_support/core_ext/string"
 module TiyoHw
   SLEEP_TIME = 4
@@ -9,8 +10,14 @@ module TiyoHw
   # EDITOR = ENV['EDITOR'] || "atom".freeze
   EDITOR = "atom".freeze
 
+
   def self.generate_cmd(command, url_or_path = nil)
     return ShellFunction.cmd if command == "init"
+    if command == "install-chrome"
+      ChromeManifest.write
+
+      return 'Chrome Hook installed'
+    end
     return fail_msg("Please enter a valid URL: #{url_or_path.inspect} is not a valid url ") if url_or_path.to_s.blank?
 
     case command
