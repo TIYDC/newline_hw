@@ -3,6 +3,7 @@ require_relative "tiyo_hw/run"
 require_relative "tiyo_hw/setup"
 require_relative "tiyo_hw/shell_function"
 require_relative "tiyo_hw/chrome_manifest"
+require_relative "tiyo_hw/gui_trigger"
 require "active_support/core_ext/string"
 module TiyoHw
   SLEEP_TIME = 4
@@ -13,6 +14,7 @@ module TiyoHw
 
   def self.generate_cmd(command, url_or_path = nil)
     return ShellFunction.cmd if command == "init"
+
     if command == "install-chrome"
       ChromeManifest.write
 
@@ -25,6 +27,8 @@ module TiyoHw
       Setup.new(url_or_path).cmd
     when "run"
       Run.new(url_or_path).cmd
+    when "gui-trigger"
+      GuiTrigger.new(url_or_path).call
     end
   end
 
