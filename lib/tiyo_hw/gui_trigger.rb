@@ -12,26 +12,16 @@ module TiyoHw
       @newline_submission_id = newline_submission_id
     end
 
-
-    def submission_info
-      @_submission_info ||= get_submission_info
-    end
-
     def call
       `osascript -e '#{applescript}'`
     end
 
     private def applescript
-      repo = submission_info["url"]
       s = ""
       s += "tell application \"#{TERMINAL_TO_TRIGGER}\" to do script "
-      s += "\"hw #{repo}\"\n"
+      s += "\"hw #{@newline_submission_id}\"\n"
       s += "tell application \"#{TERMINAL_TO_TRIGGER}\" to activate"
       s
-    end
-
-    private def get_submission_info
-      NewlineCli::Api.new.get("assignment_submissions/#{@newline_submission_id}")
     end
   end
 end
