@@ -4,7 +4,7 @@ require 'json'
 require 'openssl'
 require 'newline_cli/api'
 
-module TiyoHw
+module NewlineHw
   class GuiTrigger
     TERMINAL_TO_TRIGGER ='Terminal'
 

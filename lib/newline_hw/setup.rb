@@ -1,7 +1,7 @@
 require "fileutils"
 require "uri"
 require 'shellwords'
-module TiyoHw
+module NewlineHw
   class Setup
     attr_accessor :url, :newline_submission_id
 

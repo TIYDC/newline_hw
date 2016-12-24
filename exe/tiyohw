@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-# coding: utf-8
-require_relative "../lib/tiyo_hw"
-
-puts TiyoHw.generate_cmd(*ARGV)

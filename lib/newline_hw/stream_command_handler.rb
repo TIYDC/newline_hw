@@ -1,6 +1,6 @@
 require "json"
 
-module TiyoHw
+module NewlineHw
   class StreamCommandHandler
     attr_reader :command, :payload
     def initialize(command)

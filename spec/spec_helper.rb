@@ -25,7 +25,7 @@ SimpleCov.start do
   add_filter "/spec/"
 end
 
-require "./lib/tiyo_hw"
+require "./lib/newline_hw"
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

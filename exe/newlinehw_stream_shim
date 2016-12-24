@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 # coding: utf-8
 
+# Load binaries for
 export PATH=~/.rbenv/shims:$PATH
+
 export PATH="$HOME/.rvm/bin:$PATH"
+
 if [ -f /usr/local/share/chruby/chruby.sh && [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]]; then
   source /usr/local/share/chruby/chruby.sh
 fi
 
 exeDir=$(dirname -- "$BASH_SOURCE")
 $exeDir/newlinehw_stream
+ 

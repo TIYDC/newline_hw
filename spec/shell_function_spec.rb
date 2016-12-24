@@ -1,7 +1,7 @@
-require "./lib/tiyo_hw/shell_function"
+require "./lib/newline_hw/shell_function"
 
-describe TiyoHw::ShellFunction do
+describe NewlineHw::ShellFunction do
   it "can generate a function" do
-    expect(TiyoHw::ShellFunction.cmd).to include "hw"
+    expect(NewlineHw::ShellFunction.cmd).to include "hw"
   end
 end

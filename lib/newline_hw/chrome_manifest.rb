@@ -1,5 +1,5 @@
 require 'json'
-module TiyoHw
+module NewlineHw
   module ChromeManifest
     NAME = "com.theironyard.newlinecli.hw"
 

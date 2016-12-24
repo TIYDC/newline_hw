@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "tiyo_hw/version"
+require "newline_hw/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "tiyo_hw"
-  spec.version       = TiyoHw::VERSION
+  spec.name          = "newline_hw"
+  spec.version       = NewlineHw::VERSION
   spec.authors       = ["Russell Osborne"]
-  spec.email         = ["russell@burningpony.com"]
+  spec.email         = ["russell@theironyard.com"]
 
   spec.summary       = "Quickly Clone and setup basic ruby and JS projects."
   spec.description   = "Quickly Clone and setup basic ruby and JS projects."
-  spec.homepage      = "https://www.theironyard.com."
+  spec.homepage      = "https://online.theironyard.com."
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or

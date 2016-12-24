@@ -1,4 +1,4 @@
-# TiyoHw
+# NewlineHw
 
 Is a tool to rapidly clone and setup projects in a standard format, this is primarily
 used to improving the speed to review homework turned in in a bootcamp like setting.
@@ -7,11 +7,11 @@ used to improving the speed to review homework turned in in a bootcamp like sett
 
 Install from rubygems:
 
-    $ gem install tiyo_hw
+    $ gem install newline_hw
 
 In your .bashrc / .bash_profile / .zshrc
 
-    $ eval "$(tiyohw init)"
+    $ eval "$(newlinehw init)"
 
 ## Usage
 
@@ -54,7 +54,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/tiyo_hw. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/newline_hw. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License

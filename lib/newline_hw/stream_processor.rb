@@ -1,6 +1,6 @@
 require "json"
 
-module TiyoHw
+module NewlineHw
   class StreamProcessor
     attr_reader :logger
     def initialize(stdin, stdout, opts = {})

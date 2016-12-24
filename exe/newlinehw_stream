@@ -2,13 +2,13 @@
 # coding: utf-8
 require 'logger'
 require 'json'
-require_relative '../lib/tiyo_hw'
+require_relative '../lib/newline_hw'
 
 logger = Logger.new(File.expand_path '/var/logs/newlinehw.log')
 
 begin
-  TiyoHw::StreamProcessor.new($stdin, $stdout, logger: logger).on_message do |msg|
-    send_message(TiyoHw::StreamCommandHandler.new(msg).call)
+  NewlineHw::StreamProcessor.new($stdin, $stdout, logger: logger).on_message do |msg|
+    send_message(NewlineHw::StreamCommandHandler.new(msg).call)
   end
 rescue Exception => e
   logger.error e

@@ -1,4 +1,4 @@
-module TiyoHw
+module NewlineHw
   module Runners
     class Base
       attr_reader :commands, :pwd

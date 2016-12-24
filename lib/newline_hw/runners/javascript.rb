@@ -1,4 +1,4 @@
-module TiyoHw
+module NewlineHw
   module Runners
     class Javascript < Base
       def npm?

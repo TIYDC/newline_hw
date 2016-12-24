@@ -1,13 +1,13 @@
-require_relative "tiyo_hw/version"
-require_relative "tiyo_hw/run"
-require_relative "tiyo_hw/setup"
-require_relative "tiyo_hw/shell_function"
-require_relative "tiyo_hw/chrome_manifest"
-require_relative "tiyo_hw/gui_trigger"
-require_relative "tiyo_hw/stream_command_handler"
-require_relative "tiyo_hw/stream_processor"
+require_relative "newline_hw/version"
+require_relative "newline_hw/run"
+require_relative "newline_hw/setup"
+require_relative "newline_hw/shell_function"
+require_relative "newline_hw/chrome_manifest"
+require_relative "newline_hw/gui_trigger"
+require_relative "newline_hw/stream_command_handler"
+require_relative "newline_hw/stream_processor"
 require "active_support/core_ext/string"
-module TiyoHw
+module NewlineHw
   SLEEP_TIME = 4
   HOMEWORK_DIR = "~/theironyard/homework".freeze
   # EDITOR = ENV['EDITOR'] || "atom".freeze
