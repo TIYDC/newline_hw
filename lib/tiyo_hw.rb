@@ -4,6 +4,8 @@ require_relative "tiyo_hw/setup"
 require_relative "tiyo_hw/shell_function"
 require_relative "tiyo_hw/chrome_manifest"
 require_relative "tiyo_hw/gui_trigger"
+require_relative "tiyo_hw/stream_command_handler"
+require_relative "tiyo_hw/stream_processor"
 require "active_support/core_ext/string"
 module TiyoHw
   SLEEP_TIME = 4

@@ -1,11 +1,10 @@
 require 'json'
 module TiyoHw
   module ChromeManifest
-    NAME = "com.the_iron_yard.newline_hw_cli"
-
+    NAME = "com.theironyard.newlinecli.hw"
 
     def binary_path
-      File.expand_path File.join(__FILE__, "..", "..", "..", "bin", "tiyohw")
+      File.expand_path File.join(__FILE__, "..", "..", "..", "exe", "newlinehw_stream_shim")
     end
 
     def native_messaging_manifest_path
@@ -20,7 +19,8 @@ module TiyoHw
         path: binary_path,
         type: "stdio",
         allowed_origins: [
-          "chrome-extension://aonjmhddadffdpljpnfnilhmhfgfbbdp/"
+          "chrome-extension://fnhanbdccpjnnoohoppkeejljjljihcc/",
+          "chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/"
         ]
       })
     end
