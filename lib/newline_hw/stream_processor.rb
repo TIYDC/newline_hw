@@ -23,14 +23,14 @@ module NewlineHw
       return unless text_length_bytes
 
       # Unpack bytes in a ruby int.
-      text_length = text_length_bytes.unpack('i')[0]
-      return JSON.parse(@stdin.read(text_length))
+      text_length = text_length_bytes.unpack("i")[0]
+      JSON.parse(@stdin.read(text_length))
     end
 
     def send_message(message)
       m = message.to_json
       @logger.debug "Sending Message: #{m.length} #{m}"
-      @stdout.write [m.length].pack('I')
+      @stdout.write [m.length].pack("I")
       @stdout.write(m)
       @stdout.flush
     end

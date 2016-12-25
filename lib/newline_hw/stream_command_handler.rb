@@ -9,11 +9,11 @@ module NewlineHw
     end
 
     def call
-      return {status: :fail, message: "no command found"} unless command
+      return { status: :fail, message: "no command found" } unless command
       begin
-        {status: :ok, message: GuiTrigger.new(payload).call}
+        { status: :ok, message: GuiTrigger.new(payload).call }
       rescue StandardError => e
-        return {status: :fail, message: e.message}
+        return { status: :fail, message: e.message }
       end
     end
   end

@@ -1,15 +1,21 @@
 #!/usr/bin/env bash
 # coding: utf-8
 
-# Load binaries for
-export PATH=~/.rbenv/shims:$PATH
+# Load binaries for rbenv
+if [ -d "$HOME/.rbenv/shims" ]; then
+  export PATH=~/.rbenv/shims:$PATH
+  # Load RVM into a shell session *as a function*
+elif [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
+  # First try to load from a user install
+  source "$HOME/.rvm/scripts/rvm"
 
-export PATH="$HOME/.rvm/bin:$PATH"
+elif [[ -s "/usr/local/rvm/scripts/rvm" ]] ; then
+  # Then try to load from a root install
+  source "/usr/local/rvm/scripts/rvm"
 
-if [ -f /usr/local/share/chruby/chruby.sh && [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]]; then
+elif [ -f /usr/local/share/chruby/chruby.sh && [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]]; then
   source /usr/local/share/chruby/chruby.sh
 fi
 
 exeDir=$(dirname -- "$BASH_SOURCE")
 $exeDir/newlinehw_stream
- 

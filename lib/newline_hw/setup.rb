@@ -1,6 +1,6 @@
 require "fileutils"
 require "uri"
-require 'shellwords'
+require "shellwords"
 module NewlineHw
   class Setup
     attr_accessor :url, :newline_submission_id

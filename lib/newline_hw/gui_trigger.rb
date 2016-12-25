@@ -1,12 +1,12 @@
-require 'uri'
-require 'net/http'
-require 'json'
-require 'openssl'
-require 'newline_cli/api'
+require "uri"
+require "net/http"
+require "json"
+require "openssl"
+require "newline_cli/api"
 
 module NewlineHw
   class GuiTrigger
-    TERMINAL_TO_TRIGGER ='Terminal'
+    TERMINAL_TO_TRIGGER = "Terminal".freeze
 
     def initialize(newline_submission_id)
       @newline_submission_id = newline_submission_id

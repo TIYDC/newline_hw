@@ -1,16 +1,19 @@
 #!/usr/bin/env ruby
 # coding: utf-8
-require 'logger'
-require 'json'
-require_relative '../lib/newline_hw'
+require "logger"
+require "json"
+require_relative "../lib/newline_hw"
 
-logger = Logger.new(File.expand_path '/var/logs/newlinehw.log')
+logger = Logger.new(File.new(File.expand_path(NewlineHw.logfile), "a+"))
 
 begin
   NewlineHw::StreamProcessor.new($stdin, $stdout, logger: logger).on_message do |msg|
     send_message(NewlineHw::StreamCommandHandler.new(msg).call)
   end
-rescue Exception => e
+rescue StandardError => e
   logger.error e
   exit 1
+
+rescue SystemExit
+  exit 0
 end
