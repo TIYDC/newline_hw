@@ -2,18 +2,33 @@ require "json"
 
 module NewlineHw
   class StreamCommandHandler
-    attr_reader :command, :payload
-    def initialize(command)
-      @command = command["command"]
-      @payload = command["payload"]
+    attr_reader :event, :data, :message_id
+    def initialize(event)
+      @event = event["event"].to_sym
+      @data = event["data"]
+      @message_id = event["message_id"].to_i
     end
 
     def call
-      return { status: :fail, message: "no command found" } unless command
       begin
-        { status: :ok, message: GuiTrigger.new(payload).call }
+        case @event
+        when :heartbeat
+          {
+            status: :ok,
+            message_id: message_id,
+            data: {
+              version: NewlineHw::VERSION,
+              ruby_version: RUBY_VERSION
+            }
+          }
+        when :clone_and_open_submission
+          { status: :ok, message_id: message_id, data: GuiTrigger.new(data).call }
+        else
+          { event: @event, message_id: message_id, status: :fail, message: "no event handler found in Stream Command Handler" }
+        end
+
       rescue StandardError => e
-        return { status: :fail, message: e.message }
+        return { event: @event, message_id: message_id, status: :fail, data: e.message }
       end
     end
   end

@@ -1,7 +1,7 @@
 require_relative "newline_hw/version"
-require_relative "newline_hw/run"
-require_relative "newline_hw/setup"
-require_relative "newline_hw/shell_function"
+require_relative "newline_hw/shell/run"
+require_relative "newline_hw/shell/setup"
+require_relative "newline_hw/shell/function"
 require_relative "newline_hw/chrome_manifest"
 require_relative "newline_hw/gui_trigger"
 require_relative "newline_hw/stream_command_handler"
@@ -19,7 +19,7 @@ module NewlineHw
   end
 
   def self.generate_cmd(command, url_or_path = nil)
-    return ShellFunction.cmd if command == "init"
+    return Shell::Function.cmd if command == "init"
 
     if command == "install"
       Dir.mkdir(File.dirname(logfile)) unless Dir.exist?(File.dirname(logfile))

@@ -1,7 +1,7 @@
-require "./lib/newline_hw/shell_function"
+require "./lib/newline_hw/shell/function"
 
-describe NewlineHw::ShellFunction do
+describe NewlineHw::Shell::Function do
   it "can generate a function" do
-    expect(NewlineHw::ShellFunction.cmd).to include "hw"
+    expect(NewlineHw::Shell::Function.cmd).to include "hw"
   end
 end

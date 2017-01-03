@@ -7,11 +7,12 @@
 # }
 
 module NewlineHw
-  class ShellFunction
-    HW_FUNCTION = "hw".freeze
-    def self.cmd
-      path = File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "exe", "newlinehw"))
-      <<-eos
+  module Shell
+    class Function
+      HW_FUNCTION = "hw".freeze
+      def self.cmd
+        path = File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "exe", "newlinehw"))
+        <<-eos
 function #{HW_FUNCTION}() {
  URL=$1
  OUTPUT="$(#{path} setup $URL)"
@@ -20,6 +21,7 @@ function #{HW_FUNCTION}() {
  eval ${OUTPUT}
 }
 eos
+      end
     end
   end
 end
