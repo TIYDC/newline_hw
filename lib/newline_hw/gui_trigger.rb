@@ -33,7 +33,6 @@ module NewlineHw
       "hw #{@newline_submission_id} --editor=#{@editor}"
     end
 
-
     private def applescript_for_terminal
       <<-APPLESCRIPT
         tell application "#{application}" to do script "#{command_to_run_in_tty}"
