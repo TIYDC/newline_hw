@@ -14,7 +14,7 @@ module NewlineHw
     end
 
     def generate
-      JSON.pretty_generate(
+      {
         name: NAME,
         description: spec.description,
         path: binary_path,
@@ -23,12 +23,20 @@ module NewlineHw
           "chrome-extension://fnhanbdccpjnnoohoppkeejljjljihcc/",
           "chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/"
         ]
-      )
+      }
     end
 
     def write
-      Dir.mkdir(File.dirname(native_messaging_manifest_path)) unless Dir.exist?(File.dirname(native_messaging_manifest_path))
-      File.open(native_messaging_manifest_path, "w+") { |f| f.write(ChromeManifest.generate) }
+      create_native_messaging_manifest_directory
+
+      File.open(native_messaging_manifest_path, "w+") do |f|
+        f.write(JSON.pretty_generate(ChromeManifest.generate))
+      end
+    end
+
+    private def create_native_messaging_manifest_directory
+      return if Dir.exist?(File.dirname(native_messaging_manifest_path))
+      Dir.mkdir(File.dirname(native_messaging_manifest_path))
     end
 
     private def spec
