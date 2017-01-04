@@ -7,13 +7,14 @@ module NewlineHw
       # Generate a series of language **AGNOISIC** commands to download and
       # organize a students homework.
     class Setup
-      attr_accessor :url, :newline_submission_id
-
-      def initialize(opts)
-        @newline_submission_id = Integer(opts)
+      attr_accessor :url, :newline_submission_id, :options
+      def initialize(id_or_url, options)
+        @newline_submission_id = Integer(id_or_url)
+        @options = options
         @url = submission_info["url"]
-      rescue
-        @url = opts
+      rescue ArgumentError
+        @options = options
+        @url = id_or_url
       end
 
       def submission_info
