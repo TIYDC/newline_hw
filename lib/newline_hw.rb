@@ -19,29 +19,4 @@ module NewlineHw
   def self.editor
     "atom".freeze
   end
-
-  def self.generate_cmd(command, url_or_path = nil)
-    return Shell::Function.cmd if command == "init"
-
-    if command == "install"
-      Dir.mkdir(File.dirname(logfile)) unless Dir.exist?(File.dirname(logfile))
-      ChromeManifest.write
-      return "Chrome Hook installed"
-    end
-
-    return fail_msg("Please enter a valid URL: #{url_or_path.inspect} is not a valid url ") if url_or_path.to_s.blank?
-
-    case command
-    when "setup"
-      Setup.new(url_or_path).cmd
-    when "run"
-      Run.new(url_or_path).cmd
-    when "gui-trigger"
-      GuiTrigger.new(url_or_path).call
-    end
-  end
-
-  def self.fail_msg(msg)
-    "echo '#{msg}'"
-  end
 end
