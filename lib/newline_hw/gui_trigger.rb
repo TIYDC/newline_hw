@@ -19,15 +19,38 @@ module NewlineHw
     end
 
     def call
+      applescript = case application
+      when  "iTerm2"
+        applescript_for_iterm
+      else
+        applescript_for_terminal
+      end
+      puts applescript
       `osascript -e '#{applescript}'`
     end
 
-    private def applescript
-      s = ""
-      s += "tell application \"#{application}\" to do script "
-      s += "\"EDITOR=#{editor} hw #{@newline_submission_id}\"\n"
-      s += "tell application \"#{application}\" to activate"
-      s
+    private def command_to_run_in_tty
+      "hw #{@newline_submission_id} --editor=#{@editor}"
+    end
+
+
+    private def applescript_for_terminal
+      <<-APPLESCRIPT
+        tell application "#{application}" to do script "#{command_to_run_in_tty}"
+        tell application "#{application}" to activate
+      APPLESCRIPT
+    end
+
+    private def applescript_for_iterm
+       <<-APPLESCRIPT
+        tell application \"#{application}\"
+          set newWindow to (create window with default profile)
+
+          tell current session of newWindow
+            write text "#{command_to_run_in_tty}"
+          end tell
+        end tell
+      APPLESCRIPT
     end
   end
 end
