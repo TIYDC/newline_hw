@@ -21,16 +21,20 @@ module NewlineHw
 
     desc "run WORKINGDIR", "generate a shell command to run language and project specfic tasks a given SUBMISSION_ID"
     option :editor
-    def run_command(working_dir, submission_id=nil)
+    def run_command(working_dir, _submission_id = nil)
       puts Shell::Run.new(working_dir, options).cmd
     end
     desc "", ""
     option :editor
     option :application
     def gui_trigger(id)
-      data = options.merge({id: id})
+      data = options.merge(id: id)
       GuiTrigger.new(data).call
     end
-
+    no_commands do
+      def exit_on_failure?
+        true
+      end
+    end
   end
 end
