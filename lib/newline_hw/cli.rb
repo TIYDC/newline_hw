@@ -1,14 +1,14 @@
 require "thor"
 module NewlineHw
   class Cli < Thor
-    desc "init", ""
+    desc "init", "install the hw function into a current terminal session"
     def init
       puts Shell::Function.cmd
     end
 
     desc "install newlinehw chrome adapter", "will setup a logging file and a chrome manifest to allow this app to be communicated to by the newline-assistant chrome extension."
     def install
-      Dir.mkdir(File.dirname(logfile)) unless Dir.exist?(File.dirname(logfile))
+      NewlineHw.make_log_directory
       ChromeManifest.write
       puts "Chrome Hook installed"
     end
@@ -31,6 +31,7 @@ module NewlineHw
       data = options.merge(id: id)
       GuiTrigger.new(data).call
     end
+
     no_commands do
       def exit_on_failure?
         true

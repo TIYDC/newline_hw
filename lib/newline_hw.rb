@@ -12,11 +12,18 @@ module NewlineHw
   SLEEP_TIME = 4
   HOMEWORK_DIR = "~/theironyard/homework".freeze
 
-  def self.logfile
+  module_function
+
+  def logfile
     File.expand_path "~/Library/Logs/newline_hw/newlinehw.log"
   end
 
-  def self.editor
+  def editor
     "atom".freeze
+  end
+
+  def make_log_directory
+    return if Dir.exist?(File.dirname(NewlineHw.logfile))
+    Dir.mkdir(File.dirname(NewlineHw.logfile))
   end
 end
