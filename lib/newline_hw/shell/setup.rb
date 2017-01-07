@@ -23,6 +23,7 @@ module NewlineHw
       end
 
       def sha
+        return submission_info["sha"] if @newline_submission_id
         matches = /\b[0-9a-f]{40}\b/.match(url)
         matches.to_s if matches && !gist?
       end
