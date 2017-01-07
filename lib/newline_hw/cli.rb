@@ -10,7 +10,8 @@ module NewlineHw
     def install
       NewlineHw.make_log_directory
       ChromeManifest.write
-      Config.install_default
+      NewlineHw::Config.install_default
+      puts "Installed a config file to `#{NewlineHw::Config::CONFIG_PATH}`"
       puts "Chrome Hook installed"
     end
 

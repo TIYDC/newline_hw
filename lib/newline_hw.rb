@@ -1,4 +1,5 @@
 require_relative "newline_hw/version"
+require_relative "newline_hw/config"
 require_relative "newline_hw/shell/run"
 require_relative "newline_hw/shell/setup"
 require_relative "newline_hw/shell/function"
@@ -10,12 +11,15 @@ require "active_support/core_ext/string"
 
 module NewlineHw
   SLEEP_TIME = 4
-  HOMEWORK_DIR = "~/theironyard/homework".freeze
 
   module_function
 
+  def config
+    Config.new
+  end
+
   def logfile
-    File.expand_path "~/Library/Logs/newline_hw/newlinehw.log"
+    File.expand_path config.log_file
   end
 
   def make_log_directory

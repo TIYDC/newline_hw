@@ -45,7 +45,7 @@ module NewlineHw
       end
 
       def homework_path
-        File.expand_path(HOMEWORK_DIR)
+        File.expand_path(NewlineHw.config.homework_dir)
       end
 
       def setup

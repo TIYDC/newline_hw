@@ -4,11 +4,11 @@ require "logger"
 require "json"
 require_relative "../lib/newline_hw"
 
-logger = Logger.new(File.new(File.expand_path(NewlineHw.logfile), "a+"))
+logger = Logger.new(File.new(File.expand_path(NewlineHw.config.log_file), "a+"))
 
 begin
-  NewlineHw::StreamProcessor.
-    new($stdin, $stdout, logger: logger).on_message do |msg|
+  NewlineHw::StreamProcessor
+    .new($stdin, $stdout, logger: logger).on_message do |msg|
       send_message(NewlineHw::StreamCommandHandler.new(msg).call)
   end
 rescue StandardError => e
