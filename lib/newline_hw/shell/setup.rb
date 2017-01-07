@@ -74,7 +74,7 @@ module NewlineHw
       end
 
       private def fetch_and_checkout_pr
-        "git fetch /pull/#{pr_id}:#{BRANCH_NAME} && git checkout #{BRANCH_NAME}"
+        "git fetch origin pull/#{pr_id}/head:#{BRANCH_NAME} && git checkout #{BRANCH_NAME}"
       end
 
       private def infer_git_url_from_pr
