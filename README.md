@@ -15,7 +15,7 @@ Run
 
 In your .bashrc / .bash_profile / .zshrc **THIS IS VERY REQUIRED**
 
-    $ eval "$(newlinehw init)"
+    $ eval "$(newline_hw init)"
 
 ## Usage
 
