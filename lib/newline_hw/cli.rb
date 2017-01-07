@@ -6,7 +6,10 @@ module NewlineHw
       puts Shell::Function.cmd
     end
 
-    # TODO: add command to edit config file with EDITOR
+    desc "config", "edit your config file in your editor"
+    def config
+      `#{NewlineHw.config.editor} #{NewlineHw::Config::CONFIG_PATH}`
+    end
 
     desc "install newlinehw config file and chrome adapter",
      "will setup a logging file and a chrome manifest to allow this app to be communicated to by the newline-assistant chrome extension."
