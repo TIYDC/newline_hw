@@ -29,6 +29,23 @@ describe NewlineHw::Shell::Setup do
     end
   end
 
+  describe "when a normal github repo" do
+    subject(:setup) do
+      NewlineHw::Shell::Setup.new(
+        "https://github.com/barnameh/Time-Entry-Data.git", {}
+      )
+    end
+
+    it "does not detect a pr" do
+      expect(setup.pr?).to be_falsey
+    end
+
+    it "does not mutate git url" do
+      expect(setup.git_url).to eq "https://github.com/barnameh/Time-Entry-Data.git"
+    end
+
+  end
+
   describe "for a github pullrequest url" do
     subject(:setup) do
       NewlineHw::Shell::Setup.new(
@@ -45,7 +62,7 @@ describe NewlineHw::Shell::Setup do
     end
 
     it "can infer a pr's git url" do
-      expect(setup.git_url).to eq  "https://github.com/jamesdabbs/lita-panic.git"
+      expect(setup.git_url).to eq "https://github.com/jamesdabbs/lita-panic.git"
     end
 
     it "will attempt to checkout branch of pull" do
