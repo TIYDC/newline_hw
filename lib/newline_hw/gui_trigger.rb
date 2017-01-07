@@ -24,7 +24,7 @@ module NewlineHw
       else
         applescript_for_terminal
       end
-      puts applescript
+
       `osascript -e '#{applescript}'`
     end
 
