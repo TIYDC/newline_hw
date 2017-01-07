@@ -17,7 +17,7 @@ module NewlineHw
       HW_FUNCTION = "hw".freeze
       module_function
       def path
-        File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "..", "exe", "newlinehw"))
+        File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "..", "exe", "newline_hw"))
       end
 
       def cmd

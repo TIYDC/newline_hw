@@ -18,4 +18,4 @@ elif [ -f /usr/local/share/chruby/chruby.sh && [ -n "$BASH_VERSION" ] || [ -n "$
 fi
 
 exeDir=$(dirname -- "$BASH_SOURCE")
-$exeDir/newlinehw_stream
+$exeDir/newline_hw_stream

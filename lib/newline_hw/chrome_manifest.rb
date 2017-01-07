@@ -6,7 +6,7 @@ module NewlineHw
     module_function
 
     def binary_path
-      File.expand_path File.join(__FILE__, "..", "..", "..", "exe", "newlinehw_stream_shim")
+      File.expand_path File.join(__FILE__, "..", "..", "..", "exe", "newline_hw_stream_shim")
     end
 
     def native_messaging_manifest_path
