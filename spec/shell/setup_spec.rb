@@ -40,9 +40,16 @@ describe NewlineHw::Shell::Setup do
       expect(setup.cmd.scan("cd ").size).to eq 2
     end
 
+    it "can detect a pr" do
+      expect(setup.pr?).to be_truthy
+    end
+
+    it "can infer a pr's git url" do
+      expect(setup.git_url).to eq  "https://github.com/jamesdabbs/lita-panic.git"
+    end
+
     it "will attempt to checkout branch of pull" do
-      pending "Need to test if we can pull a PR directly vs hitting api to get relative directory"
-      expect(setup.cmd).to match "git checkout"
+      expect(setup.cmd).to match "git checkout submitted_assignment"
     end
   end
 end

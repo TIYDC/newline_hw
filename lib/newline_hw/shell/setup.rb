@@ -4,10 +4,12 @@ require "shellwords"
 
 module NewlineHw
   module Shell
+
       ##
       # Generate a series of language **AGNOISIC** commands to download and
       # organize a students homework.
     class Setup
+      BRANCH_NAME = "submitted_assignment"
       attr_accessor :url, :newline_submission_id, :options
       def initialize(id_or_url, options)
         @newline_submission_id = Integer(id_or_url)
@@ -29,12 +31,17 @@ module NewlineHw
       end
 
       def git_url
+        return infer_git_url_from_pr if pr?
         final_url = url.split("/tree/").first
         "#{final_url}#{'.git' unless final_url.end_with?('.git')}"
       end
 
       def gist?
         /gist\.github\.com/.match(url)
+      end
+
+      def pr?
+        %r{\/\/github.com}.match(url) && %r{\/pull\/\d+}
       end
 
       def dir_name
@@ -60,9 +67,22 @@ module NewlineHw
         cmds << "cd #{homework_path}"
         cmds << "git clone #{git_url} #{dir_name}"
         cmds << "cd #{dir_name}"
-        cmds << "git checkout #{sha} -b submitted_assignment" if sha
+        cmds << fetch_and_checkout_pr if pr?
+        cmds << "git checkout #{sha} -b #{BRANCH_NAME}" if sha
         cmds << "echo #{Shellwords.escape JSON.pretty_generate submission_info} > .newline_submission_meta.json" if newline_submission_id
         cmds.join(" && ")
+      end
+
+      private def fetch_and_checkout_pr
+        "git fetch /pull/#{pr_id}:#{BRANCH_NAME} && git checkout #{BRANCH_NAME}"
+      end
+
+      private def infer_git_url_from_pr
+        url.split("/pull/").first + ".git"
+      end
+
+      private def pr_id
+        url.split("/pull/").last.to_i
       end
 
       private def query_submission_info
