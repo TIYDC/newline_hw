@@ -41,7 +41,7 @@ module NewlineHw
       end
 
       def pr?
-        %r{\/\/github.com}.match(url) && %r{\/pull\/\d+}
+        %r{\/\/github.com}.match(url) && %r{\/pull\/\d+}.match(url)
       end
 
       def dir_name
