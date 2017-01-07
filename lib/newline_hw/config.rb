@@ -11,6 +11,10 @@ module NewlineHw
       "log_file" => "~/Library/Logs/newline_hw/newlinehw.log"
     }.freeze
 
+    def update(options)
+      @config = config.merge(options)
+    end
+
     def config
       @config ||= DEFAULTS.merge(config_file)
     end

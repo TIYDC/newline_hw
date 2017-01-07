@@ -7,9 +7,9 @@ require "newline_cli/api"
 module NewlineHw
   class GuiTrigger
     attr_reader :editor
-    def initialize(data)
+    def initialize(data, config)
       @newline_submission_id = data["id"]
-      @application = data["application"]
+      @application = config.terminal
     end
 
     def application

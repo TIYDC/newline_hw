@@ -4,19 +4,18 @@ require "shellwords"
 
 module NewlineHw
   module Shell
-
-      ##
-      # Generate a series of language **AGNOISIC** commands to download and
-      # organize a students homework.
+    ##
+    # Generate a series of language **AGNOISIC** commands to download and
+    # organize a students homework.
     class Setup
-      BRANCH_NAME = "submitted_assignment"
-      attr_accessor :url, :newline_submission_id, :options
-      def initialize(id_or_url, options)
+      BRANCH_NAME = "submitted_assignment".freeze
+      attr_accessor :url, :newline_submission_id, :config
+      def initialize(id_or_url, config)
+        @config = config
         @newline_submission_id = Integer(id_or_url)
-        @options = options
         @url = submission_info["url"]
       rescue ArgumentError
-        @options = options
+        @config = config
         @url = id_or_url
       end
 
@@ -53,7 +52,7 @@ module NewlineHw
       end
 
       def homework_path
-        File.expand_path(NewlineHw.config.homework_dir)
+        File.expand_path(config.homework_dir)
       end
 
       def setup

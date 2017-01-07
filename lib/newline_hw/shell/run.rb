@@ -7,18 +7,17 @@ module NewlineHw
     ##
     # Generate a series of language specfic commands to start a project up
     class Run
-      attr_reader :pwd
-      def initialize(pwd, options)
+      attr_reader :pwd, :config
+      def initialize(pwd, config)
         @pwd = pwd
-        @editor = options[:editor]
-        @start_editor = options[:start_editor]
+        @config = config
       end
 
       def cmd
         commands = []
         commands += Runners::Ruby.get_commands(pwd)
         commands += Runners::Javascript.get_commands(pwd)
-        commands << "#{@editor} ." if @start_editor
+        commands << "#{config.editor} ." if config.launch_editor
         commands.join(" && ")
       end
     end

@@ -1,12 +1,14 @@
 require "./lib/newline_hw/shell/setup"
 
 describe NewlineHw::Shell::Setup do
+  let(:config) {double(:config, homework_dir: "./tmp")}
+
   it "can generate a setup command based upon an id" do
-    # expect(NewlineHw::Shell::Setup.new(1, {}).cmd).to include "hw"
+    # expect(NewlineHw::Shell::Setup.new(1, config).cmd).to include "hw"
   end
 
   describe "for a git url" do
-    subject(:setup) { NewlineHw::Shell::Setup.new("git@github.com:TIYDC/tiyo-hw.git", {}) }
+    subject(:setup) { NewlineHw::Shell::Setup.new("git@github.com:TIYDC/tiyo-hw.git", config) }
 
     it "can generate a setup command" do
       expect(setup.cmd.scan("cd ").size).to eq 2
@@ -16,7 +18,7 @@ describe NewlineHw::Shell::Setup do
   describe "for a gist url" do
     subject(:setup) do
       NewlineHw::Shell::Setup.new(
-        "https://gist.github.com/caseywatts/8eec8ff974dee9f3b247", {}
+        "https://gist.github.com/caseywatts/8eec8ff974dee9f3b247", config
       )
     end
 
@@ -32,7 +34,7 @@ describe NewlineHw::Shell::Setup do
   describe "when a normal github repo" do
     subject(:setup) do
       NewlineHw::Shell::Setup.new(
-        "https://github.com/barnameh/Time-Entry-Data.git", {}
+        "https://github.com/barnameh/Time-Entry-Data.git", config
       )
     end
 
@@ -49,7 +51,7 @@ describe NewlineHw::Shell::Setup do
   describe "for a github pullrequest url" do
     subject(:setup) do
       NewlineHw::Shell::Setup.new(
-        "https://github.com/jamesdabbs/lita-panic/pull/5", {}
+        "https://github.com/jamesdabbs/lita-panic/pull/5", config
       )
     end
 

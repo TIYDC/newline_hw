@@ -37,12 +37,12 @@ module NewlineHw
     def run_command(working_dir, _submission_id = nil)
       puts Shell::Run.new(working_dir, config).cmd
     end
+
     desc "", ""
     option :editor
     option :application
     def gui_trigger(id)
-      data = Config.new.config.merge(options).merge(id: id)
-      GuiTrigger.new(data).call
+      GuiTrigger.new({ id: id }, config).call
     end
 
     no_commands do
@@ -53,6 +53,7 @@ module NewlineHw
       def config
         config = Config.new
         config.update(options)
+        config
       end
     end
   end
