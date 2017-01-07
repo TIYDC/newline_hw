@@ -21,7 +21,7 @@ module NewlineHw
       say "Chrome Native Messaging Hook installed for Newline Assistant"
       say ""
       say ("*" * 30) + " YOU MUST!! Add this line to your shell profile " + ("*" * 30), :red
-      puts '$ eval "$(newline_hw init)"'
+      say '$ eval "$(newline_hw init)"'
       say ("*" * 30), :red
     end
 
@@ -29,15 +29,13 @@ module NewlineHw
      "generate a shell command to clone and setup a given SUBMISSION_ID"
     option :editor
     def setup_command(submission_id)
-      data = Config.new.config.merge(options)
-      puts Shell::Setup.new(submission_id, data).cmd
+      puts Shell::Setup.new(submission_id, config).cmd
     end
 
     desc "run WORKINGDIR", "generate a shell command to run language and project specfic tasks a given SUBMISSION_ID"
     option :editor
     def run_command(working_dir, _submission_id = nil)
-      data = Config.new.config.merge(options)
-      puts Shell::Run.new(working_dir, data).cmd
+      puts Shell::Run.new(working_dir, config).cmd
     end
     desc "", ""
     option :editor
@@ -50,6 +48,11 @@ module NewlineHw
     no_commands do
       def exit_on_failure?
         true
+      end
+
+      def config
+        config = Config.new
+        config.update(options)
       end
     end
   end
