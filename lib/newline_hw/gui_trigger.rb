@@ -19,13 +19,11 @@ module NewlineHw
 
     def call
       applescript = case application
-      when  "iTerm2"
+      when "iTerm2"
         applescript_for_iterm
       else
         applescript_for_terminal
       end
-
-      `osascript -e '#{applescript}'`
 
       { terminal_output: `osascript -e '#{applescript}'` }
     end
