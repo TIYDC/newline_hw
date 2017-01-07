@@ -1,6 +1,10 @@
 module NewlineHw
   module Shell
     module Runners
+      ##
+      # Build a shell command that is dependent on files of a project being
+      # present that are UNOPINIONATED about how to setup / start a ruby related
+      # project
       class Ruby < Base
         def rails?
           file?("bin", "rails")
