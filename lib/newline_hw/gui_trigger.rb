@@ -26,6 +26,8 @@ module NewlineHw
       end
 
       `osascript -e '#{applescript}'`
+
+      { terminal_output: `osascript -e '#{applescript}'` }
     end
 
     private def command_to_run_in_tty

@@ -2,6 +2,9 @@ require "json"
 
 module NewlineHw
   class StreamProcessor
+    # Don't instant shutdown wait for messages to clear, as chrome is much faster
+    # to trigger disconnect callback over wait for succesful messages.
+    SHUTDOWN_PAUSE = 0.5
     attr_reader :logger
     def initialize(stdin, stdout, opts = {})
       @logger = opts[:logger]
@@ -12,7 +15,8 @@ module NewlineHw
     def on_message(&block)
       loop do
         msg = read_native_message
-        exit 0 unless msg
+        sleep(SHUTDOWN_PAUSE) && exit(0) unless msg
+        @logger.debug "Receiving Message #{msg} of size:#{msg.length}"
         instance_exec(msg, &block)
       end
     end
