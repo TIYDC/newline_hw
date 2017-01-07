@@ -7,6 +7,7 @@ require_relative "newline_hw/chrome_manifest"
 require_relative "newline_hw/gui_trigger"
 require_relative "newline_hw/stream_command_handler"
 require_relative "newline_hw/stream_processor"
+require "newline_cli"
 require "active_support/core_ext/string"
 
 module NewlineHw
