@@ -15,7 +15,7 @@ module NewlineHw
       ChromeManifest.write
       NewlineHw::Config.install_default
       puts "Installed a config file to `#{NewlineHw::Config::CONFIG_PATH}`"
-      puts "Chrome Hook installed"
+      puts "Chrome Native Messaging Hook installed for Newline Assistant"
     end
 
     desc "setup SUBMISSION_ID",
