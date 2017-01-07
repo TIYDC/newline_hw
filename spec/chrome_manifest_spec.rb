@@ -7,7 +7,7 @@ describe NewlineHw::ChromeManifest do
   end
 
   it "has a path that is relative to the user" do
-    expect(manifest[:path]).to end_with "newlinehw_stream_shim"
+    expect(manifest[:path]).to end_with "newline_hw_stream_shim"
     expect(manifest[:path]).to include ENV["USER"]
   end
 
