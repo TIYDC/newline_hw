@@ -6,7 +6,7 @@ module NewlineHw
     DEFAULTS = {
       "editor" => "atom",
       "terminal" => "Terminal",
-      "start_editor" => true,
+      "launch_editor" => true,
       "homework_dir" => "~/theironyard/homework",
       "log_file" => "~/Library/Logs/newline_hw/newlinehw.log"
     }.freeze
@@ -33,6 +33,10 @@ module NewlineHw
 
     def homework_dir
       config["homework_dir"]
+    end
+
+    def launch_editor
+      config["launch_editor"]
     end
 
     def self.install_default
