@@ -10,7 +10,6 @@ module NewlineHw
     def initialize(data)
       @newline_submission_id = data["id"]
       @application = data["application"]
-      @editor = data["editor"]
     end
 
     def application
@@ -30,7 +29,7 @@ module NewlineHw
     end
 
     private def command_to_run_in_tty
-      "hw #{@newline_submission_id} --editor=#{@editor}"
+      "hw #{@newline_submission_id}"
     end
 
     private def applescript_for_terminal
