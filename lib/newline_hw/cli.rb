@@ -6,7 +6,10 @@ module NewlineHw
       puts Shell::Function.cmd
     end
 
-    desc "install newlinehw config file and chrome adapter", "will setup a logging file and a chrome manifest to allow this app to be communicated to by the newline-assistant chrome extension."
+    # TODO: add command to edit config file with EDITOR
+
+    desc "install newlinehw config file and chrome adapter",
+     "will setup a logging file and a chrome manifest to allow this app to be communicated to by the newline-assistant chrome extension."
     def install
       NewlineHw.make_log_directory
       ChromeManifest.write
@@ -15,7 +18,8 @@ module NewlineHw
       puts "Chrome Hook installed"
     end
 
-    desc "setup SUBMISSION_ID", "generate a shell command to clone and setup a given SUBMISSION_ID"
+    desc "setup SUBMISSION_ID",
+     "generate a shell command to clone and setup a given SUBMISSION_ID"
     option :editor
     def setup_command(submission_id)
       data = Config.new.config.merge(options)
