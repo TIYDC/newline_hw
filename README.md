@@ -9,7 +9,7 @@ Install from rubygems:
 
     $ gem install newline_hw
 
-Run
+Run to install the config file and chrome integration.
 
     $ newline_hw install
 
@@ -31,7 +31,7 @@ Once the the eval code has been added to your bash or zsh profile you will have 
 
 _All languages_
 
-1. Clone a repo into ~/theironyard/homework using githubname-reponame
+1. Clone a git-url/repo/gist/pull-request into ~/theironyard/homework by default using githubname-reponame
 2. Trigger your editor to open.
 3. `cd` current shell into new directory
 
@@ -45,10 +45,22 @@ _Rails_
 2.  Start a rails server / open it in default browser
 3.  `bin/rake test`
 4.  Reown rails server process so everything behaves as expected.
+5.  Tell spring die when it needs to die.
 
 _Javascript_
 
 1. Run `npm install` when `package.json` present and no yarn file
+1. Run `yarn install` when `yarn.lock` present
+
+## TIYO-Assistant Integration
+
+This provides a message bus to allow TIYO assistant to send json to our local binary. This is used to open a terminal window (Apple Terminal or iTerm2) using appleScript and start a `hw <submission-id>` command.  We use the NewlineCli to backfill data required to run the remainder of the commands.
+
+1. You MUST be on a MAC (hope to drop this in the future)
+1. You MUST have `newline_cli` installed
+2. You MUST be running a ruby 2.3 or higher
+3. You MUST have that ruby either in the system loadpath or use, rbenv, rvm, or chruby.
+4. THIS IS ALPHA so please send logs.
 
 ## Development
 
