@@ -9,7 +9,11 @@ Install from rubygems:
 
     $ gem install newline_hw
 
-In your .bashrc / .bash_profile / .zshrc
+Run
+
+    $ newline_hw install
+
+In your .bashrc / .bash_profile / .zshrc **THIS IS VERY REQUIRED**
 
     $ eval "$(newlinehw init)"
 
@@ -28,7 +32,7 @@ Once the the eval code has been added to your bash or zsh profile you will have 
 _All languages_
 
 1. Clone a repo into ~/theironyard/homework using githubname-reponame
-2. Trigger your editor to open. 
+2. Trigger your editor to open.
 3. `cd` current shell into new directory
 
 _Ruby_
@@ -44,7 +48,7 @@ _Rails_
 
 _Javascript_
 
-1. Run `npm install` when `package.json` present
+1. Run `npm install` when `package.json` present and no yarn file
 
 ## Development
 
@@ -54,10 +58,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/newline_hw. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/TIYDC/newline_hw. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
