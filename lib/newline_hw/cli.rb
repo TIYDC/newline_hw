@@ -6,29 +6,32 @@ module NewlineHw
       puts Shell::Function.cmd
     end
 
-    desc "install newlinehw chrome adapter", "will setup a logging file and a chrome manifest to allow this app to be communicated to by the newline-assistant chrome extension."
+    desc "install newlinehw config file and chrome adapter", "will setup a logging file and a chrome manifest to allow this app to be communicated to by the newline-assistant chrome extension."
     def install
       NewlineHw.make_log_directory
       ChromeManifest.write
+      Config.install_default
       puts "Chrome Hook installed"
     end
 
     desc "setup SUBMISSION_ID", "generate a shell command to clone and setup a given SUBMISSION_ID"
     option :editor
     def setup_command(submission_id)
-      puts Shell::Setup.new(submission_id, options).cmd
+      data = Config.new.config.merge(options)
+      puts Shell::Setup.new(submission_id, data).cmd
     end
 
     desc "run WORKINGDIR", "generate a shell command to run language and project specfic tasks a given SUBMISSION_ID"
     option :editor
     def run_command(working_dir, _submission_id = nil)
-      puts Shell::Run.new(working_dir, options).cmd
+      data = Config.new.config.merge(options)
+      puts Shell::Run.new(working_dir, data).cmd
     end
     desc "", ""
     option :editor
     option :application
     def gui_trigger(id)
-      data = options.merge(id: id)
+      data = Config.new.config.merge(options).merge(id: id)
       GuiTrigger.new(data).call
     end
 

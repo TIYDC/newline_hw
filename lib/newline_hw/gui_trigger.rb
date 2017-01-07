@@ -9,8 +9,8 @@ module NewlineHw
     attr_reader :editor
     def initialize(data)
       @newline_submission_id = data["id"]
-      @application = data["application"] || "Terminal"
-      @editor = data["editor"] || "vim"
+      @application = data["application"]
+      @editor = data["editor"]
     end
 
     def application

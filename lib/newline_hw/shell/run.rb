@@ -10,14 +10,15 @@ module NewlineHw
       attr_reader :pwd
       def initialize(pwd, options)
         @pwd = pwd
-        @editor = options[:editor] || NewlineHw.editor
+        @editor = options[:editor]
+        @start_editor = options[:start_editor]
       end
 
       def cmd
         commands = []
         commands += Runners::Ruby.get_commands(pwd)
         commands += Runners::Javascript.get_commands(pwd)
-        commands << "#{@editor} ."
+        commands << "#{@editor} ." if @start_editor
         commands.join(" && ")
       end
     end
