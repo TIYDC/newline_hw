@@ -5,7 +5,12 @@ module NewlineHw
   # A json message handler to trigger actions from chrome native messaging
   class StreamCommandHandler
     attr_reader :event, :data, :message_at
-    EVENTS = [:heartbeat, :clone_and_open_submission].freeze
+    EVENTS = [
+      :heartbeat,
+      :clone_and_open_submission,
+      :check_if_cloneable
+    ].freeze
+
     def initialize(event)
       @event = event["event"].to_sym
       @data = event["data"]
@@ -33,6 +38,17 @@ module NewlineHw
           newline_cli_version: NewlineCli::VERSION,
           ruby_version: RUBY_VERSION,
           config_path: Config::CONFIG_PATH
+        }
+      }
+    end
+
+    def check_if_cloneable
+      {
+        status: :ok,
+        message_at: message_at,
+        data: {
+          cloneable:
+          Shell::Setup.new(data["id"], Config.new).cloneable?
         }
       }
     end

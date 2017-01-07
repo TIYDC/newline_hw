@@ -23,6 +23,10 @@ module NewlineHw
         @_submission_info ||= query_submission_info
       end
 
+      def cloneable?
+        pr? || gist? || github_project_link? || git? || false
+      end
+
       def sha
         return submission_info["sha"] if @newline_submission_id
         matches = /\b[0-9a-f]{40}\b/.match(url)
@@ -33,6 +37,14 @@ module NewlineHw
         return infer_git_url_from_pr if pr?
         final_url = url.split("/tree/").first
         "#{final_url}#{'.git' unless final_url.end_with?('.git')}"
+      end
+
+      def github_project_link?
+        url.starts_with?("https://github.com") && URI(url).path.split("/").reject{|l| l.empty?}.size == 2
+      end
+
+      def git?
+        url.starts_with?("git") || url.ends_with?(".git")
       end
 
       def gist?

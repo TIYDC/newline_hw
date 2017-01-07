@@ -1,0 +1,18 @@
+{
+  "id": 25082,
+  "student": {
+    "id": 9230,
+    "name": "Buzz Lightyear"
+  },
+  "assignment": {
+    "id": 8896,
+    "title": "Flight",
+    "due_date": null
+  },
+  "url": "https://github.com/buzz-lightyear/flight.git",
+  "git_sha": "89b34954b7bafa8745fc5e3bcf7a661584f7bb45",
+  "notes": "I LIKE CODE",
+  "status": "complete_and_satisfactory",
+  "created_at": "2016-10-25T08:24:12.722-04:00",
+  "updated_at": "2016-10-25T13:30:41.457-04:00"
+}
