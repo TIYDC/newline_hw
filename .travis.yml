@@ -1,0 +1,8 @@
+before_install: gem install newline_cli --source $PRIVATE_GEM_REPO
+script: bundle exec rake
+
+rvm:
+  - 2.3.3
+  - 2.4.0
+
+sudo: false

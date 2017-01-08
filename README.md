@@ -1,4 +1,5 @@
 # NewlineHw
+[![Build Status](https://travis-ci.org/TIYDC/newline_hw.svg?branch=master)](https://travis-ci.org/TIYDC/newline_hw)
 
 Is a tool to rapidly clone and setup projects in a standard format, this is primarily
 used to improving the speed to review homework turned in during a bootcamp setting.
