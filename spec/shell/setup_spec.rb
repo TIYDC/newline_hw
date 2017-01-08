@@ -2,7 +2,9 @@ require "./lib/newline_hw/shell/setup"
 
 describe NewlineHw::Shell::Setup do
   let(:config) { double(:config, homework_dir: "./tmp") }
+
   describe "for a newline id" do
+
     subject(:setup) { NewlineHw::Shell::Setup.new("25082", config) }
     let(:json) do
       File.read \
@@ -10,19 +12,38 @@ describe NewlineHw::Shell::Setup do
           File.join \
             __FILE__, "..", "..", "fixtures", "newline_assingment_submission.json"
     end
-    before do
-      stub_request(:get, "https://online.theironyard.com/api/assignment_submissions/25082")
-        .to_return(
-          body: json
-        )
+
+    describe "when auth is present" do
+
+
+      before do
+        expect(NewlineCli::Api).to receive(:token).and_return("123")
+
+        stub_request(:get, "https://online.theironyard.com/api/assignment_submissions/25082")
+          .to_return(
+            body: json
+          )
+      end
+
+      it "can be detected as cloneable" do
+        expect(setup.cloneable?).to be_truthy
+      end
+
+      it "can generate a setup command based upon an id" do
+        expect(setup.cmd).to include "hw"
+      end
     end
 
-    it "can be detected as cloneable" do
-      expect(setup.cloneable?).to be_truthy
-    end
+    describe "when NO auth" do
+      before do
+        allow(NewlineCli::Api).to receive(:token).and_raise \
+          NewlineCli::AuthenticationError
+      end
 
-    it "can generate a setup command based upon an id" do
-      # expect(NewlineHw::Shell::Setup.new(1, config).cmd).to include "hw"
+      it "can be detected as cloneable" do
+        expect { setup.cloneable? }.to \
+          raise_error(NewlineCli::AuthenticationError)
+      end
     end
   end
 
