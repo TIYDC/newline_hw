@@ -30,6 +30,18 @@ module NewlineHw
     option :editor
     def setup_command(submission_id)
       puts Shell::Setup.new(submission_id, config).cmd
+    rescue NewlineCli::AuthenticationError => e
+      say "Could not log into Newline using NewlineCLI, have you logged in?"
+      say "Error from NewlineCli #{e.message}"
+      exit 3
+    rescue Excon::Error::Socket => e
+      say "Error could not open a connection to newline.  Do you have internet?"
+      say "Error message #{e.message}"
+      exit 3
+    rescue Excon::Error::Forbidden => e
+      say "You do not have access to this submission."
+      say "Error message #{e.message}"
+      exit 3
     end
 
     desc "run WORKINGDIR", "generate a shell command to run language and project specfic tasks a given SUBMISSION_ID"

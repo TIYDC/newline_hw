@@ -98,12 +98,6 @@ module NewlineHw
 
       private def query_submission_info
         NewlineCli::Api.new.get("assignment_submissions/#{@newline_submission_id}")
-      rescue Excon::Error::Socket => e
-        puts "Error could not open a connection to newline #{e.message}"
-        exit 3
-      rescue Excon::Error::Forbidden => e
-        puts "You do not have access to this submission #{e.message}"
-        exit 3
       end
     end
   end
