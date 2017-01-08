@@ -1,9 +1,9 @@
-  # if [[ $# -eq 0 ]] ; then
-  #     echo 'WARNING: You must provide a git url, pull-request url or a Newline Submission ID.'
-  #     exit 0
-  # fi
-  #  OUTPUT="$(#{path} run_command $PWD $*)"
- # eval $OUTPUT
+# if [[ $# -eq 0 ]] ; then
+#     echo 'WARNING: You must provide a git url, pull-request url or a Newline Submission ID.'
+#     exit 0
+# fi
+#  OUTPUT="$(#{path} run_command $PWD $*)"
+# eval $OUTPUT
 
 module NewlineHw
   module Shell
@@ -15,7 +15,9 @@ module NewlineHw
     # shell to interpreter correctly.
     module Function
       HW_FUNCTION = "hw".freeze
+
       module_function
+
       def path
         File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "..", "exe", "newline_hw"))
       end

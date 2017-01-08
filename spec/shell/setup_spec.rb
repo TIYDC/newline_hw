@@ -4,7 +4,6 @@ describe NewlineHw::Shell::Setup do
   let(:config) { double(:config, homework_dir: "./tmp") }
 
   describe "for a newline id" do
-
     subject(:setup) { NewlineHw::Shell::Setup.new("25082", config) }
     let(:json) do
       File.read \
@@ -14,8 +13,6 @@ describe NewlineHw::Shell::Setup do
     end
 
     describe "when auth is present" do
-
-
       before do
         expect(NewlineCli::Api).to receive(:token).and_return("123")
 

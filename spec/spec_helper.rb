@@ -26,7 +26,7 @@ SimpleCov.start do
 end
 
 require "./lib/newline_hw"
-require 'webmock/rspec'
+require "webmock/rspec"
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

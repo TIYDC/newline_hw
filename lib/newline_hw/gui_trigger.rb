@@ -19,10 +19,10 @@ module NewlineHw
 
     def call
       applescript = case application
-      when "iTerm2"
-        applescript_for_iterm
-      else
-        applescript_for_terminal
+                    when "iTerm2"
+                      applescript_for_iterm
+                    else
+                      applescript_for_terminal
       end
 
       { terminal_output: `osascript -e '#{applescript}'` }
@@ -40,7 +40,7 @@ module NewlineHw
     end
 
     private def applescript_for_iterm
-       <<-APPLESCRIPT
+      <<-APPLESCRIPT
         tell application \"#{application}\"
           set newWindow to (create window with default profile)
 

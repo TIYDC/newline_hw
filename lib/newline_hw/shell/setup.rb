@@ -40,7 +40,7 @@ module NewlineHw
       end
 
       def github_project_link?
-        url.starts_with?("https://github.com") && URI(url).path.split("/").reject{|l| l.empty?}.size == 2
+        url.starts_with?("https://github.com") && URI(url).path.split("/").reject(&:empty?).size == 2
       end
 
       def git?

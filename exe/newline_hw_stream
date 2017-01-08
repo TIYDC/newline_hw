@@ -9,7 +9,7 @@ logger = Logger.new(File.new(File.expand_path(NewlineHw.config.log_file), "a+"))
 begin
   NewlineHw::StreamProcessor
     .new($stdin, $stdout, logger: logger).on_message do |msg|
-      send_message(NewlineHw::StreamCommandHandler.new(msg).call)
+    send_message(NewlineHw::StreamCommandHandler.new(msg).call)
   end
 rescue StandardError => e
   logger.error e
