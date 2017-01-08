@@ -1,18 +1,7 @@
-# if [[ $# -eq 0 ]] ; then
-#     echo 'WARNING: You must provide a git url, pull-request url or a Newline Submission ID.'
-#     exit 0
-# fi
-#  OUTPUT="$(#{path} run_command $PWD $*)"
-# eval $OUTPUT
-
 module NewlineHw
   module Shell
     ##
     # Produce a bash / zsh function to be called by a tty compatible shell
-    #
-    # WARNING: all bash lines below must be terminated in a semicolon, line
-    # endings do not survive being passed through the heredoc correctly for the
-    # shell to interpreter correctly.
     module Function
       HW_FUNCTION = "hw".freeze
 
