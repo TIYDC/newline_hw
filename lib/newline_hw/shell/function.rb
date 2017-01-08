@@ -27,23 +27,23 @@ function #{HW_FUNCTION}() {
   setup_command=$(#{path} setup_command $*);
   setup_es=$?;
 
-  if [ $setup_es = 0 ]; then;
+  if [ "$setup_es" = "0" ]; then
     eval $setup_command;
     setup_command_es=$?;
 
     run_command=$(#{path} run_command $PWD $*);
     run_es=$?;
 
-    if [ $run_es = 0 ] && [ $setup_command_es = 0 ]; then;
+    if [ $run_es = "0" ] && [ $setup_command_es = "0" ]; then
       eval $run_command;
-    else;
+    else
       echo "Could not run project run command";
       echo $run_command;
-    fi;
-  else;
+    fi
+  else
     echo "Could not run project setup command";
     echo $setup_command;
-  fi;
+  fi
 }
 eos
       end
