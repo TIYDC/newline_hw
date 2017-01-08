@@ -1,7 +1,7 @@
 # NewlineHw
 
 Is a tool to rapidly clone and setup projects in a standard format, this is primarily
-used to improving the speed to review homework turned in in a bootcamp like setting.
+used to improving the speed to review homework turned in during a bootcamp setting.
 
 ## Installation
 
@@ -25,7 +25,34 @@ Once the the eval code has been added to your bash or zsh profile you will have 
 
   Example
 
+  Newline Assignment Submission ID
+  `hw 30698`
+
+  Github Repo
+
   `hw https://github.com/rposborne/countries`
+
+  Pull Request
+
+  `hw https://github.com/hexorx/countries/pull/416`
+
+  Gist
+
+  `hw https://gist.github.com/alirobe/7f3b34ad89a159e6daa1`
+
+  Any Git URL
+
+  `hw git@bitbucket.org:pzolee/tcpserver.git`
+
+### Configuration
+
+User specific configuration is stored in a yaml file at the HOME path for a user.
+
+Quickly edit this config in your editor by running this command.
+
+`newline_hw config`
+
+To see all possible config options go to [lib/newline_hw/config.rb](lib/newline_hw/config.rb)
 
 ### What it does
 
