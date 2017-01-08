@@ -28,9 +28,9 @@ module NewlineHw
 
     def write
       create_native_messaging_manifest_directory
-
+      
       File.open(native_messaging_manifest_path, "w+") do |f|
-        f.write(JSON.pretty_generate(ChromeManifest.generate))
+        f.write(JSON.pretty_generate(generate))
       end
     end
 

@@ -19,6 +19,10 @@ module NewlineHw
     Config.new
   end
 
+  def root_path
+    File.expand_path("../..", __FILE__)
+  end
+
   def logfile
     File.expand_path config.log_file
   end

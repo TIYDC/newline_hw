@@ -18,11 +18,19 @@ module NewlineHw
       ChromeManifest.write
       NewlineHw::Config.install_default
       say "Installed a config file to `#{NewlineHw::Config::CONFIG_PATH}`"
-      say "Chrome Native Messaging Hook installed for Newline Assistant"
+      install_chrome
       say ""
       say ("*" * 30) + " YOU MUST!! Add this line to your shell profile " + ("*" * 30), :red
       say '$ eval "$(newline_hw init)"'
       say ("*" * 30), :red
+    end
+
+    desc "install chrome adapter",
+         "will setup a logging file and a chrome manifest to allow this app to be communicated to by the newline-assistant chrome extension."
+    def install_chrome
+      NewlineHw.make_log_directory
+      ChromeManifest.write
+      say "Chrome Native Messaging Hook installed for Newline Assistant", :green
     end
 
     desc "setup SUBMISSION_ID",

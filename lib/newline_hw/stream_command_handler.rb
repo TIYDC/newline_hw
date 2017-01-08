@@ -37,7 +37,8 @@ module NewlineHw
           version: NewlineHw::VERSION,
           newline_cli_version: NewlineCli::VERSION,
           ruby_version: RUBY_VERSION,
-          config_path: Config::CONFIG_PATH
+          config_path: Config::CONFIG_PATH,
+          path: NewlineHw.root_path
         }
       }
     end
