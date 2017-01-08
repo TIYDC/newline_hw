@@ -43,12 +43,13 @@ module NewlineHw
     end
 
     def check_if_cloneable
+      setup = Shell::Setup.new(data["id"], Config.new)
       {
         status: :ok,
         message_at: message_at,
         data: {
-          cloneable:
-          Shell::Setup.new(data["id"], Config.new).cloneable?
+          cloneable: setup.cloneable?,
+          submission_info: setup.submission_info
         }
       }
     end
