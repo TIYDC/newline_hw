@@ -22,28 +22,29 @@ In your .bashrc / .bash_profile / .zshrc **THIS IS VERY REQUIRED**
 
 Once the the eval code has been added to your bash or zsh profile you will have access to the `hw` command.  This is where the majority of the tools use comes into play.
 
-  `hw GIT_REPO`
+  `$ hw GIT_REPO`
 
-  Example
+  ### Examples
 
   Newline Assignment Submission ID
-  `hw 30698`
+
+  `$ hw 30698`
 
   Github Repo
 
-  `hw https://github.com/rposborne/countries`
+  `$ hw https://github.com/rposborne/countries`
 
   Pull Request
 
-  `hw https://github.com/hexorx/countries/pull/416`
+  `$ hw https://github.com/hexorx/countries/pull/416`
 
   Gist
 
-  `hw https://gist.github.com/alirobe/7f3b34ad89a159e6daa1`
+  `$ hw https://gist.github.com/alirobe/7f3b34ad89a159e6daa1`
 
   Any Git URL
 
-  `hw git@bitbucket.org:pzolee/tcpserver.git`
+  `$ hw git@bitbucket.org:pzolee/tcpserver.git`
 
 ### Configuration
 
@@ -51,7 +52,7 @@ User specific configuration is stored in a yaml file at the HOME path for a user
 
 Quickly edit this config in your editor by running this command.
 
-`newline_hw config`
+`$ newline_hw config`
 
 To see all possible config options go to [lib/newline_hw/config.rb](lib/newline_hw/config.rb)
 
@@ -82,7 +83,7 @@ _Javascript_
 
 ## TIYO-Assistant Integration
 
-This provides a message bus to allow TIYO assistant to send json to our local binary. This is used to open a terminal window (Apple Terminal or iTerm2) using appleScript and start a `hw <submission-id>` command.  We use the NewlineCli to backfill data required to run the remainder of the commands.
+This provides a message bus to allow TIYO assistant to send json to our local binary. This is used to open a terminal window (Apple Terminal or iTerm2) using appleScript and start a `$ hw <submission-id>` command.  We use the NewlineCli to backfill data required to run the remainder of the commands.
 
 1. You MUST be on a MAC (hope to drop this in the future)
 1. You MUST have `newline_cli` installed
