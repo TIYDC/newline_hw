@@ -34,6 +34,11 @@ module NewlineHw
       end
     end
 
+    def remove
+      return unless File.file?(native_messaging_manifest_path)
+      FileUtils.rm native_messaging_manifest_path
+    end
+
     private def create_native_messaging_manifest_directory
       return if Dir.exist?(File.dirname(native_messaging_manifest_path))
       Dir.mkdir(File.dirname(native_messaging_manifest_path))

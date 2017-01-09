@@ -31,4 +31,9 @@ module NewlineHw
     return if Dir.exist?(File.dirname(NewlineHw.logfile))
     Dir.mkdir(File.dirname(NewlineHw.logfile))
   end
+
+  def remove_log_directory
+    return unless Dir.exist?(File.dirname(NewlineHw.logfile))
+    FileUtils.remove_dir(File.dirname(NewlineHw.logfile))
+  end
 end

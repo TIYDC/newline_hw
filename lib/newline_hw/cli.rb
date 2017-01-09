@@ -31,6 +31,20 @@ module NewlineHw
       say "Chrome Native Messaging Hook installed for Newline Assistant", :green
     end
 
+    desc "remove chrome adaptor, and log files",
+         "purge related files "
+    def uninstall
+      NewlineHw.remove_log_directory
+      say "Chrome Messaging Logs REMOVED", :green
+      ChromeManifest.remove
+      say "Chrome Native Messaging Hook REMOVED", :green
+      say "Finish uninstall with these commands"
+      say ""
+      say "   rm #{NewlineHw::Config::CONFIG_PATH}"
+      say "   gem uninstall newline_hw --executables"
+      say ""
+    end
+
     desc "setup SUBMISSION_ID",
          "generate a shell command to clone and setup a given SUBMISSION_ID"
     option :editor
