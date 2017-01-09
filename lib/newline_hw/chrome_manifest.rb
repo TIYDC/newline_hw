@@ -6,7 +6,7 @@ module NewlineHw
     module_function
 
     def binary_path
-      File.expand_path File.join(__FILE__, "..", "..", "..", "exe", "newline_hw_stream_shim")
+      File.expand_path File.join(NewlineHw.root_path, "exe", "newline_hw_stream_shim")
     end
 
     def native_messaging_manifest_path
@@ -16,7 +16,7 @@ module NewlineHw
     def generate
       {
         name: NAME,
-        description: spec.description,
+        description: "Quickly Clone and setup basic ruby and JS projects.",
         path: binary_path,
         type: "stdio",
         allowed_origins: [
@@ -37,10 +37,6 @@ module NewlineHw
     private def create_native_messaging_manifest_directory
       return if Dir.exist?(File.dirname(native_messaging_manifest_path))
       Dir.mkdir(File.dirname(native_messaging_manifest_path))
-    end
-
-    private def spec
-      @_gemspec ||= Gem::Specification.load(File.expand_path(File.join(NewlineHw.root_path,"newline_hw.gemspec")))
     end
   end
 end
