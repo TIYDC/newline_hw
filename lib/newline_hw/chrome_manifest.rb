@@ -40,7 +40,7 @@ module NewlineHw
     end
 
     private def spec
-      @_gemspec ||= Gem::Specification.load("newline_hw.gemspec")
+      @_gemspec ||= Gem::Specification.load(File.expand_path(File.join(NewlineHw.root_path,"newline_hw.gemspec")))
     end
   end
 end
