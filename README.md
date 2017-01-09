@@ -24,7 +24,7 @@ Once the the eval code has been added to your bash or zsh profile you will have 
 
   `$ hw GIT_REPO`
 
-  ### Examples
+### Examples
 
   Newline Assignment Submission ID
 
