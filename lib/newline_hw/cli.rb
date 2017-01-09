@@ -14,8 +14,6 @@ module NewlineHw
     desc "install newlinehw config file and chrome adapter",
          "will setup a logging file and a chrome manifest to allow this app to be communicated to by the newline-assistant chrome extension."
     def install
-      NewlineHw.make_log_directory
-      ChromeManifest.write
       NewlineHw::Config.install_default
       say "Installed a config file to `#{NewlineHw::Config::CONFIG_PATH}`"
       install_chrome
