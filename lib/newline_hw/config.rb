@@ -20,7 +20,9 @@ module NewlineHw
     end
 
     def config_file
-      YAML.load_file(CONFIG_PATH) || {}
+      YAML.load_file(CONFIG_PATH) || DEFAULTS
+    rescue Errno::ENOENT
+      DEFAULTS
     end
 
     def editor
