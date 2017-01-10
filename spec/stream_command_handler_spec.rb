@@ -14,7 +14,7 @@ describe NewlineHw::StreamCommandHandler do
     it "will respond with versions of relevant applications" do
       response = handler.call
 
-      expect(response[:data][:version]).to eq NewlineHw::VERSION
+      expect(response[:data][:newline_hw_version]).to eq NewlineHw::VERSION
       expect(response[:status]).to eq :ok
     end
   end

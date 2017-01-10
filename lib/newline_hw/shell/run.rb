@@ -6,6 +6,8 @@ module NewlineHw
   module Shell
     ##
     # Generate a series of language specfic commands to start a project up
+    # This command will only be generated if the setup commands exectueded succesfully.
+    # It is safe to assume all files and folders are present a time of execution. 
     class Run
       attr_reader :pwd, :config
       def initialize(pwd, config)

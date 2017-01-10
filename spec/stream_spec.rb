@@ -17,7 +17,7 @@ describe "Messaging stream handler" do
       NewlineHw::StreamProcessor.write_message(stdin, payload)
 
       # read response
-      expect(NewlineHw::StreamProcessor.read_native_json_message(stdout)["data"]["version"])
+      expect(NewlineHw::StreamProcessor.read_native_json_message(stdout)["data"]["newline_hw_version"])
         .to eq NewlineHw::VERSION.to_s
     end
   end
