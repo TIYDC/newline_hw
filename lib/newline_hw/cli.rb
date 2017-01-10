@@ -32,8 +32,15 @@ module NewlineHw
          "will setup a logging file and a chrome manifest to allow this app to be communicated to by the newline-assistant chrome extension."
     def install_chrome_hook
       NewlineHw.make_log_directory
-      ChromeManifest.write
-      say "Chrome Native Messaging Hook installed for Newline Assistant", :green
+      begin
+        ChromeManifest.write
+        say "Chrome Native Messaging Hook installed for Newline Assistant", :green
+      rescue Errno::EACCES => e
+        path = "~/Library/Application Support/Google/Chrome/NativeMessagingHosts/com.theironyard.newlinecli.hw.json"
+        say "Could NOT add chrome native messaging hook please check permissions for #{path} and that containing folder exists with 0600 permissions.", :red
+        say "*" * 80
+        say "Error Message: #{e.message}"
+      end
     end
 
     desc "remove chrome adaptor, and log files",
