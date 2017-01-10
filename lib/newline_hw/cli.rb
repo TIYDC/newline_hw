@@ -39,6 +39,9 @@ module NewlineHw
         path = "~/Library/Application Support/Google/Chrome/NativeMessagingHosts/com.theironyard.newlinecli.hw.json"
         say "Could NOT add chrome native messaging hook please check permissions for #{path} and that containing folder exists with 0600 permissions.", :red
         say "*" * 80
+        say ""
+        say "   sudo chown -R $(whoami) #{path} "
+        say ""
         say "Error Message: #{e.message}"
       end
     end
