@@ -26,8 +26,8 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.add_dependency "activesupport"
-  spec.add_dependency "json"
+  spec.add_dependency "activesupport", ">= 5.0"
+  spec.add_dependency "json", ">= 2.0.3"
   spec.add_dependency "thor", "~> 0.19.1"
   spec.add_dependency "newline_cli", ">= 0.2.5"
 
