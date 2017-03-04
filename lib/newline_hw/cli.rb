@@ -24,7 +24,7 @@ module NewlineHw
     end
 
     desc "update related code", "it runs gem install and updates the chrome hook"
-    def update
+    def upgrade
       `gem install newline_hw && newline_hw install_chrome_hook`
     end
 
