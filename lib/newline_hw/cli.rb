@@ -24,9 +24,10 @@ module NewlineHw
     end
 
     desc "update related code", "it runs gem install and updates the chrome hook"
-    def update
+    def upgrade
       `gem install newline_hw && newline_hw install_chrome_hook`
     end
+    map update: :upgrade
 
     desc "install chrome adapter",
          "will setup a logging file and a chrome manifest to allow this app to be communicated to by the newline-assistant chrome extension."

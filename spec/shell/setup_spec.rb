@@ -14,9 +14,9 @@ describe NewlineHw::Shell::Setup do
 
     describe "when auth is present" do
       before do
-        expect(NewlineCli::Api).to receive(:token).and_return("123")
+        expect(NewlineCli::Token).to receive(:get_for_user).and_return("123")
 
-        stub_request(:get, "https://online.theironyard.com/api/assignment_submissions/25082")
+        stub_request(:get, "https://newline.theironyard.com/api/assignment_submissions/25082")
           .to_return(
             body: json
           )
@@ -33,7 +33,7 @@ describe NewlineHw::Shell::Setup do
 
     describe "when NO auth" do
       before do
-        allow(NewlineCli::Api).to receive(:token).and_raise \
+        allow(NewlineCli::Token).to receive(:get_for_user).and_raise \
           NewlineCli::AuthenticationError
       end
 

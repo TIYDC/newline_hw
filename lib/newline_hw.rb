@@ -8,6 +8,10 @@ require_relative "newline_hw/gui_trigger"
 require_relative "newline_hw/stream_command_handler"
 require_relative "newline_hw/stream_processor"
 require "newline_cli"
+require "newline_cli/api"
+require "newline_cli/token"
+require "newline_cli/error"
+require "newline_cli/auth"
 require "active_support/core_ext/string"
 
 module NewlineHw
