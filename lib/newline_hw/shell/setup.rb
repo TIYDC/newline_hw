@@ -24,7 +24,7 @@ module NewlineHw
       end
 
       def cloneable?
-        pr? || gist? || github_project_link? || git? || false
+        pr? || gist? || branch? || github_project_link? || git? || false
       end
 
       def sha
@@ -55,6 +55,10 @@ module NewlineHw
         %r{\/\/github.com}.match(url) && %r{\/pull\/\d+}.match(url)
       end
 
+      def branch?
+        %r{\/\/github.com}.match(url) && %r{\/tree\/([^\\]+)}.match(url)
+      end
+
       def dir_name
         git_url.split(%r{[\/\.]})[-3..-2].join("-")
       end
@@ -79,13 +83,22 @@ module NewlineHw
         cmds << "git clone #{git_url} #{dir_name}"
         cmds << "cd #{dir_name}"
         cmds << fetch_and_checkout_pr if pr?
-        cmds << "git checkout #{sha} -b #{BRANCH_NAME}" if sha
+        cmds << fetch_and_checkout_branch if branch?
+        cmds << "git checkout -b #{BRANCH_NAME} #{sha}" if sha
         cmds << "echo #{Shellwords.escape JSON.pretty_generate submission_info} > .newline_submission_meta.json" if newline_submission_id
         cmds.join(" && ")
       end
 
       private def fetch_and_checkout_pr
         "git fetch origin pull/#{pr_id}/head:#{BRANCH_NAME} && git checkout #{BRANCH_NAME}"
+      end
+
+      def submitted_branch_name
+        branch?[1]
+      end
+
+      private def fetch_and_checkout_branch
+        "git fetch origin #{submitted_branch_name}:#{BRANCH_NAME} && git checkout #{BRANCH_NAME}"
       end
 
       private def infer_git_url_from_pr

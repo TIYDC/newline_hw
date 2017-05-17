@@ -123,6 +123,41 @@ describe NewlineHw::Shell::Setup do
     end
   end
 
+    describe "for a github pullrequest url" do
+    subject(:setup) do
+      NewlineHw::Shell::Setup.new(
+        "https://github.com/momoney1/thoughter/tree/phase-two", config
+      )
+    end
+
+    it "can be detected as cloneable" do
+      expect(setup.cloneable?).to be_truthy
+    end
+    it "can generate a setup command" do
+      expect(setup.cmd.scan("cd ").size).to eq 2
+    end
+
+    it "can detect its not a pr" do
+      expect(setup.pr?).to be_falsey
+    end
+
+    it "can detect its a branch" do
+      expect(setup.branch?).to be_truthy
+    end
+
+    it "can extract the branch name" do
+      expect(setup.submitted_branch_name).to eq "phase-two"
+    end
+
+    it "can infer a branchs's git url" do
+      expect(setup.git_url).to eq "https://github.com/momoney1/thoughter.git"
+    end
+
+    it "will attempt to checkout branch of pull" do
+      expect(setup.cmd).to match "git checkout submitted_assignment"
+    end
+  end
+
   describe "for a non git url" do
     subject(:setup) do
       NewlineHw::Shell::Setup.new(
