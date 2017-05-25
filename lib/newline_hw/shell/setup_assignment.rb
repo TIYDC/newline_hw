@@ -28,7 +28,11 @@ module NewlineHw
       end
 
       def cmd
-        config.update("homework_dir" => "#{config.homework_dir}/#{assignment_title}")
+        # FIXME: This is a hack to change the folder that we are writing to on
+        # the fly.
+        config.update(
+          "homework_dir" => "#{config.homework_dir}/#{assignment_title}"
+        )
         FileUtils.mkdir_p(config.homework_dir)
 
         setup_cmds = most_recent_submissions.map do |submission|
