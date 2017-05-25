@@ -80,6 +80,13 @@ module NewlineHw
       exit 3
     end
 
+    desc "setup_assignment ASSIGNMENT_ID",
+         "generate a shell command to clone and setup a given ASSIGNMENT_ID"
+    option :editor
+    def setup_assignment(assignment_id)
+      puts Shell::SetupAssignment.new(assignment_id, config).cmd
+    end
+
     desc "run WORKINGDIR", "generate a shell command to run language and project specfic tasks a given SUBMISSION_ID"
     option :editor
     def run_command(working_dir, _submission_id = nil)
