@@ -110,7 +110,7 @@ module NewlineHw
       end
 
       private def query_submission_info
-        NewlineCli::Api.new.get("assignment_submissions/#{@newline_submission_id}")
+        NewlineHw::Api.new.get("assignment_submissions/#{@newline_submission_id}")
       end
     end
   end

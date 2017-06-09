@@ -14,8 +14,7 @@ describe NewlineHw::Shell::Setup do
 
     describe "when auth is present" do
       before do
-        expect(NewlineCli::Token).to receive(:get_for_user).and_return("123")
-
+        expect(NewlineHw::Token).to receive(:get_for_user).and_return("123")
         stub_request(:get, "https://newline.theironyard.com/api/assignment_submissions/25082")
           .to_return(
             body: json
@@ -33,13 +32,13 @@ describe NewlineHw::Shell::Setup do
 
     describe "when NO auth" do
       before do
-        allow(NewlineCli::Token).to receive(:get_for_user).and_raise \
-          NewlineCli::AuthenticationError
+        allow(NewlineHw::Token).to receive(:get_for_user).and_raise \
+          NewlineHw::AuthenticationError
       end
 
       it "can be detected as cloneable" do
         expect { setup.cloneable? }.to \
-          raise_error(NewlineCli::AuthenticationError)
+          raise_error(NewlineHw::AuthenticationError)
       end
     end
   end

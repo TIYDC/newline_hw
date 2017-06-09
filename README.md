@@ -83,10 +83,9 @@ _Javascript_
 
 ## TIYO-Assistant Integration
 
-This provides a message bus to allow TIYO assistant to send json to our local binary. This is used to open a terminal window (Apple Terminal or iTerm2) using appleScript and start a `$ hw <submission-id>` command.  We use the NewlineCli to backfill data required to run the remainder of the commands.
+This provides a message bus to allow TIYO assistant to send json to our local binary. This is used to open a terminal window (Apple Terminal or iTerm2) using appleScript and start a `$ hw <submission-id>` command.  We use the Newline Api to backfill data required to run the remainder of the commands.
 
 1. You MUST be on a MAC (hope to drop this in the future)
-1. You MUST have `newline_cli` installed
 2. You MUST be running a ruby 2.3 or higher
 3. You MUST have that ruby either in the system loadpath or use, rbenv, rvm, or chruby.
 4. THIS IS ALPHA so please send logs.

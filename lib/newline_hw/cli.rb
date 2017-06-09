@@ -66,7 +66,7 @@ module NewlineHw
     option :editor
     def setup_command(submission_id)
       puts Shell::Setup.new(submission_id, config).cmd
-    rescue NewlineCli::AuthenticationError => e
+    rescue NewlineHw::AuthenticationError => e
       say "Could not log into Newline using NewlineCLI, have you logged in?"
       say "Error from NewlineCli #{e.message}"
       exit 3

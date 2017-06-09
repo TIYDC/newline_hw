@@ -2,7 +2,6 @@ require "uri"
 require "net/http"
 require "json"
 require "openssl"
-require "newline_cli/api"
 
 module NewlineHw
   class GuiTrigger

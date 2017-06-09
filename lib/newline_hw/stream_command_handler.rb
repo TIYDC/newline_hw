@@ -35,7 +35,6 @@ module NewlineHw
         message_at: message_at,
         data: {
           newline_hw_version: NewlineHw::VERSION,
-          newline_cli_version: NewlineCli::VERSION,
           ruby_version: RUBY_VERSION,
           newline_hw_config_path: Config::CONFIG_PATH,
           newline_hw_path: NewlineHw.root_path,
