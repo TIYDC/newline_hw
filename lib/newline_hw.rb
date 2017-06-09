@@ -14,7 +14,6 @@ require_relative "newline_hw/errors"
 require "active_support/core_ext/string"
 
 module NewlineHw
-  SLEEP_TIME = 4
 
   module_function
 
